@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54bd25be-786e-4135-9e3f-e3c404844d6f" name="Changes" comment="One">
-      <change afterPath="$PROJECT_DIR$/src/Module8/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module8/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module8/Circle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module8/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module8/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module8/Octagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module8/Pentagon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module8/Quad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module8/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module8/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module8/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module8/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module8/Shape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module8/Triangles.java" beforeDir="false" />
-    </list>
+    <list default="true" id="54bd25be-786e-4135-9e3f-e3c404844d6f" name="Changes" comment="One" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,12 +28,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="Module8" />
