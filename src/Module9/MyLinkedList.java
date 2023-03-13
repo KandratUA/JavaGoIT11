@@ -61,7 +61,7 @@ public class MyLinkedList {
     }
 
     private static class Node {
-        private Object value;
+        private final Object value;
         private Node next;
 
         public Node(Object value) {

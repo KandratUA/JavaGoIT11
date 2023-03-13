@@ -1,48 +1,47 @@
 package Module9;
 
-public class MyArrayList<T> {
-    private Object[] data;
+public class MyArrayList {
+    private Object[] elements;
     private int size;
 
     public MyArrayList() {
-        this.data = new Object[10];
-        this.size = 0;
+        elements = new Object[10];
+        size = 0;
     }
 
-    public void add(T value) {
-        if (this.size == this.data.length) {
-            Object[] newData = new Object[this.data.length * 2];
-            System.arraycopy(this.data, 0, newData, 0, this.size);
-            this.data = newData;
+    public void add(Object value) {
+        if (size == elements.length) {
+            Object[] newElements = new Object[2 * elements.length];
+            System.arraycopy(elements, 0, newElements, 0, size);
+            elements = newElements;
         }
-        this.data[this.size++] = value;
+        elements[size] = value;
+        size++;
     }
 
-    public T get(int index) {
-        if (index < 0 || index >= this.size) {
-            throw new IndexOutOfBoundsException("Index out of range: " + index);
+    public void remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
         }
-        return (T) this.data[index];
-    }
-
-    public T remove(int index) {
-        if (index < 0 || index >= this.size) {
-            throw new IndexOutOfBoundsException("Index out of range: " + index);
+        for (int i = index; i < size - 1; i++) {
+            elements[i] = elements[i + 1];
         }
-        T value = (T) this.data[index];
-        System.arraycopy(this.data, index + 1, this.data, index, this.size - index - 1);
-        this.data[--this.size] = null;
-        return value;
+        size--;
     }
 
     public void clear() {
-        for (int i = 0; i < this.size; i++) {
-            this.data[i] = null;
-        }
-        this.size = 0;
+        elements = new Object[10];
+        size = 0;
     }
 
     public int size() {
-        return this.size;
+        return size;
+    }
+
+    public Object get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        return elements[index];
     }
 }

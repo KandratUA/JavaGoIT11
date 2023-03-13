@@ -20,23 +20,17 @@ public class MyStack {
         elements[size++] = value;
     }
 
-    public Object remove(int index) {
+    public void remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        Object removedElement = elements[index];
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         size--;
-        return removedElement;
     }
 
     public void clear() {
         elements = new Object[10];
         size = 0;
-    }
-
-    public int size() {
-        return size;
     }
 
     public Object peek() {

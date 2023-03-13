@@ -2,11 +2,11 @@ package Module9;
 
 public class MyHashMap {
 
-    private final int DEFAULT_CAPACITY = 16;
     private Node[] array;
     private int size;
 
     public MyHashMap() {
+        int DEFAULT_CAPACITY = 16;
         array = new Node[DEFAULT_CAPACITY];
         size = 0;
     }
