@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54bd25be-786e-4135-9e3f-e3c404844d6f" name="Changes" comment="Tree" />
+    <list default="true" id="54bd25be-786e-4135-9e3f-e3c404844d6f" name="Changes" comment="Tree">
+      <change afterPath="$PROJECT_DIR$/src/Module9/MyArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Module9/MyLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Module9/MyQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
