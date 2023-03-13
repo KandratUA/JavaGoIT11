@@ -1,7 +1,8 @@
 package Module9;
 
-public class MyLinkedList<T> {
-    private Node<T> head;
+public class MyLinkedList {
+
+    private Node head;
     private int size;
 
     public MyLinkedList() {
@@ -9,34 +10,32 @@ public class MyLinkedList<T> {
         this.size = 0;
     }
 
-    public void add(T value) {
-        Node<T> newNode = new Node<>(value);
+    public void add(Object value) {
+        Node newNode = new Node(value);
         if (head == null) {
             head = newNode;
         } else {
-            Node<T> current = head;
-            while (current.next != null) {
-                current = current.next;
+            Node current = head;
+            while (current.getNext() != null) {
+                current = current.getNext();
             }
-            current.next = newNode;
+            current.setNext(newNode);
         }
         size++;
     }
 
     public void remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Invalid index");
+            throw new IndexOutOfBoundsException();
         }
         if (index == 0) {
-            head = head.next;
+            head = head.getNext();
         } else {
-            Node<T> current = head;
-            int i = 0;
-            while (i < index - 1) {
-                current = current.next;
-                i++;
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.getNext();
             }
-            current.next = current.next.next;
+            current.setNext(current.getNext().getNext());
         }
         size--;
     }
@@ -50,26 +49,36 @@ public class MyLinkedList<T> {
         return size;
     }
 
-    public T get(int index) {
+    public Object get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Invalid index");
+            throw new IndexOutOfBoundsException();
         }
-        Node<T> current = head;
-        int i = 0;
-        while (i < index) {
-            current = current.next;
-            i++;
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
         }
-        return current.value;
+        return current.getValue();
     }
 
-    private static class Node<T> {
-        private T value;
-        private Node<T> next;
+    private static class Node {
+        private Object value;
+        private Node next;
 
-        public Node(T value) {
+        public Node(Object value) {
             this.value = value;
             this.next = null;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
         }
     }
 }

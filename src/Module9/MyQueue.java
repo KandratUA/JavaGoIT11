@@ -1,55 +1,72 @@
 package Module9;
 
-public class MyQueue<T> {
-    private T[] array;
-    private int front;  // індекс першого елемента у черзі
-    private int rear;  // індекс наступного вільного місця у черзі
-    private int size;  // розмір черги
+import java.util.NoSuchElementException;
 
-    public MyQueue(int capacity) {
-        this.array = (T[]) new Object[capacity];
-        this.front = 0;
-        this.rear = 0;
-        this.size = 0;
+public class MyQueue<T> {
+    private Node<T> front; // вказівник на передній елемент черги
+    private Node<T> rear; // вказівник на останній елемент черги
+    private int size; // розмір черги
+
+    // внутрішній клас для зберігання елементів черги
+    private static class Node<T> {
+        private T data; // дані елементу
+        private Node<T> next; // вказівник на наступний елемент
+
+        public Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 
+    // додати елемент в кінець черги
     public void add(T value) {
-        if (size == array.length) {
-            throw new IllegalStateException("Queue is full");
+        Node<T> node = new Node<>(value);
+        if (isEmpty()) {
+            front = node;
+            rear = node;
+        } else {
+            rear.next = node;
+            rear = node;
         }
-        array[rear] = value;
-        rear = (rear + 1) % array.length;
         size++;
     }
 
+    // очистити чергу
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            array[(front + i) % array.length] = null;
-        }
-        front = 0;
-        rear = 0;
+        front = null;
+        rear = null;
         size = 0;
     }
 
+    // отримати розмір черги
     public int size() {
         return size;
     }
 
+    // отримати перший елемент черги
     public T peek() {
-        if (size == 0) {
-            return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
         }
-        return array[front];
+        return front.data;
     }
 
+    // отримати перший елемент черги і видалити його з черги
     public T poll() {
-        if (size == 0) {
-            return null;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
         }
-        T value = array[front];
-        array[front] = null;
-        front = (front + 1) % array.length;
+        T data = front.data;
+        front = front.next;
         size--;
-        return value;
+        if (isEmpty()) {
+            rear = null;
+        }
+        return data;
+    }
+
+    // перевірити, чи черга порожня
+    public boolean isEmpty() {
+        return size == 0;
     }
 }
