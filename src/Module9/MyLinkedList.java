@@ -1,8 +1,7 @@
 package Module9;
 
-public class MyLinkedList {
-
-    private Node head;
+public class MyLinkedList<T> {
+    private Node<T> head;
     private int size;
 
     public MyLinkedList() {
@@ -10,75 +9,68 @@ public class MyLinkedList {
         this.size = 0;
     }
 
-    public void add(Object value) {
-        Node newNode = new Node(value);
+    public void add(T value) {
+        Node<T> newNode = new Node<>(value);
         if (head == null) {
             head = newNode;
         } else {
-            Node current = head;
-            while (current.getNext() != null) {
-                current = current.getNext();
+            Node<T> current = head;
+            while (current.next != null) {
+                current = current.next;
             }
-            current.setNext(newNode);
+            current.next = newNode;
         }
         size++;
     }
 
     public void remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Invalid index");
         }
         if (index == 0) {
-            head = head.getNext();
+            head = head.next;
         } else {
-            Node current = head;
-            for (int i = 0; i < index - 1; i++) {
-                current = current.getNext();
+            Node<T> current = head;
+            int i = 0;
+            while (i < index - 1) {
+                current = current.next;
+                i++;
             }
-            current.setNext(current.getNext().getNext());
+            current.next = current.next.next;
         }
         size--;
     }
 
     public void clear() {
-        head = null;
-        size = 0;
+        while (head != null) {
+            remove(0);
+        }
     }
 
     public int size() {
         return size;
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Invalid index");
         }
-        Node current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.getNext();
+        Node<T> current = head;
+        int i = 0;
+        while (i < index) {
+            current = current.next;
+            i++;
         }
-        return current.getValue();
+        return current.value;
     }
 
-    private static class Node {
-        private final Object value;
-        private Node next;
+    private static class Node<T> {
+        private T value;
+        private Node<T> next;
 
-        public Node(Object value) {
+        public Node(T value) {
             this.value = value;
             this.next = null;
-        }
-
-        public Object getValue() {
-            return value;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
         }
     }
 }

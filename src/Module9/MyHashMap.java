@@ -2,85 +2,80 @@ package Module9;
 
 public class MyHashMap {
 
-    private Node[] array;
-    private int size;
-
-    public MyHashMap() {
-        int DEFAULT_CAPACITY = 16;
-        array = new Node[DEFAULT_CAPACITY];
-        size = 0;
-    }
-
-    public MyHashMap(int capacity) {
-        array = new Node[capacity];
-        size = 0;
-    }
+    private int capacity = 16;
+    private Node[] buckets = new Node[capacity];
 
     public void put(Object key, Object value) {
-        int index = getIndex(key);
-        Node head = array[index];
-        while (head != null) {
-            if (head.key.equals(key)) {
-                head.value = value;
-                return;
+        int hash = key.hashCode() % capacity;
+        Node newNode = new Node(key, value);
+        if (buckets[hash] == null) {
+            buckets[hash] = newNode;
+        } else {
+            Node currentNode = buckets[hash];
+            while (currentNode != null) {
+                if (currentNode.key.equals(key)) {
+                    currentNode.value = value;
+                    return;
+                } else if (currentNode.next == null) {
+                    currentNode.next = newNode;
+                    return;
+                }
+                currentNode = currentNode.next;
             }
-            head = head.next;
         }
-        Node node = new Node(key, value);
-        node.next = array[index];
-        array[index] = node;
-        size++;
-    }
-
-    public Object get(Object key) {
-        int index = getIndex(key);
-        Node head = array[index];
-        while (head != null) {
-            if (head.key.equals(key)) {
-                return head.value;
-            }
-            head = head.next;
-        }
-        return null;
     }
 
     public void remove(Object key) {
-        int index = getIndex(key);
-        Node head = array[index];
-        Node prev = null;
-        while (head != null) {
-            if (head.key.equals(key)) {
-                if (prev == null) {
-                    array[index] = head.next;
-                } else {
-                    prev.next = head.next;
+        int hash = key.hashCode() % capacity;
+        if (buckets[hash] != null) {
+            if (buckets[hash].key.equals(key)) {
+                buckets[hash] = buckets[hash].next;
+            } else {
+                Node currentNode = buckets[hash];
+                while (currentNode.next != null) {
+                    if (currentNode.next.key.equals(key)) {
+                        currentNode.next = currentNode.next.next;
+                        return;
+                    }
+                    currentNode = currentNode.next;
                 }
-                size--;
-                return;
             }
-            prev = head;
-            head = head.next;
         }
     }
 
     public void clear() {
-        for (int i = 0; i < array.length; i++) {
-            array[i] = null;
-        }
-        size = 0;
+        buckets = new Node[capacity];
     }
 
     public int size() {
-        return size;
+        int count = 0;
+        for (Node node : buckets) {
+            if (node != null) {
+                Node currentNode = node;
+                while (currentNode != null) {
+                    count++;
+                    currentNode = currentNode.next;
+                }
+            }
+        }
+        return count;
     }
 
-    private int getIndex(Object key) {
-        int hashCode = key.hashCode();
-        int index = (hashCode & 0x7FFFFFFF) % array.length;
-        return index;
+    public Object get(Object key) {
+        int hash = key.hashCode() % capacity;
+        if (buckets[hash] != null) {
+            Node currentNode = buckets[hash];
+            while (currentNode != null) {
+                if (currentNode.key.equals(key)) {
+                    return currentNode.value;
+                }
+                currentNode = currentNode.next;
+            }
+        }
+        return null;
     }
 
-    private class Node {
+    private static class Node {
         private Object key;
         private Object value;
         private Node next;
@@ -88,7 +83,6 @@ public class MyHashMap {
         public Node(Object key, Object value) {
             this.key = key;
             this.value = value;
-            this.next = null;
         }
     }
 }

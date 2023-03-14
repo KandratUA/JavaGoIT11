@@ -32,9 +32,9 @@ public class MyQueue<T> {
 
 
     public void clear() {
-        front = null;
-        rear = null;
-        size = 0;
+        while (!isEmpty()) {
+            poll();
+        }
     }
 
 

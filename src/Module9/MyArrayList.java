@@ -1,47 +1,56 @@
 package Module9;
 
-public class MyArrayList {
-    private Object[] elements;
-    private int size;
+
+import java.util.Arrays;
+
+public class MyArrayList<E> {
+    private int size = 0;
+    private static final int DEFAULT_CAPACITY = 10;
+    private Object elements[];
 
     public MyArrayList() {
-        elements = new Object[10];
-        size = 0;
+        elements = new Object[DEFAULT_CAPACITY];
     }
 
-    public void add(Object value) {
+    public void add(E e) {
         if (size == elements.length) {
-            Object[] newElements = new Object[2 * elements.length];
-            System.arraycopy(elements, 0, newElements, 0, size);
-            elements = newElements;
+            ensureCapacity();
         }
-        elements[size] = value;
-        size++;
+        elements[size++] = e;
     }
 
-    public void remove(int index) {
+    @SuppressWarnings("unchecked")
+    public E get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + size);
         }
-        for (int i = index; i < size - 1; i++) {
-            elements[i] = elements[i + 1];
+        return (E) elements[index];
+    }
+
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + size);
         }
-        size--;
+        E removedElement = (E) elements[index];
+        int numElementsToShift = size - index - 1;
+        if (numElementsToShift > 0) {
+            System.arraycopy(elements, index + 1, elements, index, numElementsToShift);
+        }
+        elements[--size] = null;
+        return removedElement;
     }
 
     public void clear() {
-        elements = new Object[10];
         size = 0;
+        elements = new Object[DEFAULT_CAPACITY];
     }
 
     public int size() {
         return size;
     }
 
-    public Object get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-        return elements[index];
+    private void ensureCapacity() {
+        int newCapacity = elements.length * 2;
+        elements = Arrays.copyOf(elements, newCapacity);
     }
 }

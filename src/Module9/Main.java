@@ -7,8 +7,8 @@ public class Main {
         MyHashMap map = new MyHashMap();
         MyStack stack = new MyStack();
         MyQueue<Integer> queue = new MyQueue<>();
-        MyLinkedList list = new MyLinkedList();
-        MyArrayList lists = new MyArrayList();
+        MyLinkedList<String> list = new MyLinkedList<>();
+        MyArrayList<String> lists = new MyArrayList<>();
 
         map.put("one", 1);
         map.put("two", 2);
@@ -19,6 +19,7 @@ public class Main {
         System.out.println(map.size());
         map.clear();
         System.out.println(map.size());
+        System.out.println(map.get("one"));
 
 
         stack.push(1);
@@ -71,6 +72,8 @@ public class Main {
         System.out.println(list.size());
 
 
+
+
         lists.add("apple");
         lists.add("banana");
         lists.add("orange");
@@ -89,6 +92,7 @@ public class Main {
         lists.clear();
 
         System.out.println(lists.size());
+
 
     }
 }
