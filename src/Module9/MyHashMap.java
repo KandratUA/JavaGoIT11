@@ -17,7 +17,7 @@ public class MyHashMap<K, V> {
         int bucketIndex = getBucketIndex(key);
         Node<K, V> head = buckets[bucketIndex];
 
-        // Check if key already exists in map
+
         while (head != null) {
             if (head.key.equals(key)) {
                 head.value = value;
@@ -26,7 +26,7 @@ public class MyHashMap<K, V> {
             head = head.next;
         }
 
-        // Add new node to beginning of linked list
+
         Node<K, V> newNode = new Node<>(key, value, buckets[bucketIndex]);
         buckets[bucketIndex] = newNode;
         size++;
@@ -36,7 +36,7 @@ public class MyHashMap<K, V> {
         int bucketIndex = getBucketIndex(key);
         Node<K, V> head = buckets[bucketIndex];
 
-        // Traverse linked list to find node with matching key
+
         while (head != null) {
             if (head.key.equals(key)) {
                 return head.value;
@@ -53,10 +53,10 @@ public class MyHashMap<K, V> {
         Node<K, V> head = buckets[bucketIndex];
         Node<K, V> prev = null;
 
-        // Traverse linked list to find node with matching key
+
         while (head != null) {
             if (head.key.equals(key)) {
-                // Remove node
+
                 if (prev == null) {
                     buckets[bucketIndex] = head.next;
                 } else {
