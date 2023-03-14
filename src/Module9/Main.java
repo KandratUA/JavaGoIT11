@@ -4,48 +4,33 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        MyHashMap map = new MyHashMap();
-        MyStack stack = new MyStack();
+        MyHashMap<String, Integer> map = new MyHashMap<>(10);
+        MyStack<String> stack = new MyStack<>(5);
         MyQueue<Integer> queue = new MyQueue<>();
         MyLinkedList<String> list = new MyLinkedList<>();
         MyArrayList<String> lists = new MyArrayList<>();
 
+
         map.put("one", 1);
         map.put("two", 2);
         map.put("three", 3);
+        System.out.println(map.get("one"));
         System.out.println(map.get("two"));
+        System.out.println(map.get("three"));
         map.remove("two");
-        System.out.println(map.get("two"));
         System.out.println(map.size());
         map.clear();
         System.out.println(map.size());
-        System.out.println(map.get("one"));
 
-
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        System.out.println("Stack: " + Arrays.toString(stack.elements));
-
-
-        stack.remove(1);
-        System.out.println("Stack after removing element at index 1: " + Arrays.toString(stack.elements));
-
-
+        stack.push("A");
+        stack.push("B");
+        stack.push("C");
+        System.out.println(stack.pop());
+        System.out.println(stack.peek());
+        stack.remove(0);
+        System.out.println(stack.size());
         stack.clear();
-        System.out.println("Stack after clearing: " + Arrays.toString(stack.elements));
-
-
-        stack.push(4);
-        stack.push(5);
-        System.out.println("Stack: " + Arrays.toString(stack.elements));
-
-
-        System.out.println("Peek: " + stack.peek());
-
-
-        System.out.println("Pop: " + stack.pop());
-        System.out.println("Stack after popping: " + Arrays.toString(stack.elements));
+        System.out.println(stack.size());
 
         queue.add(1);
         queue.add(2);

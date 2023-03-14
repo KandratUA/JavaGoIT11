@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54bd25be-786e-4135-9e3f-e3c404844d6f" name="Changes" comment="nine.one">
+    <list default="true" id="54bd25be-786e-4135-9e3f-e3c404844d6f" name="Changes" comment="nine.two">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module8/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module8/Shape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Module9/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module9/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module9/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module9/MyArrayList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Module9/MyHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module9/MyHashMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module9/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module9/MyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Module9/MyQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module9/MyQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Module9/MyStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Module9/MyStack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +20,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -125,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678744640030</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="nine.two">
+      <created>1678818236049</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678818236049</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +148,7 @@
     <MESSAGE value="One" />
     <MESSAGE value="Tree" />
     <MESSAGE value="nine.one" />
-    <option name="LAST_COMMIT_MESSAGE" value="nine.one" />
+    <MESSAGE value="nine.two" />
+    <option name="LAST_COMMIT_MESSAGE" value="nine.two" />
   </component>
 </project>

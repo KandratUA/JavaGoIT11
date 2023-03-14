@@ -2,48 +2,53 @@ package Module9;
 
 import java.util.NoSuchElementException;
 
-public class MyStack {
-    Object[] elements;
-    private int size;
 
-    public MyStack() {
-        elements = new Object[10];
-        size = 0;
+public class MyStack<T> {
+    private T[] stack;
+    private int top;
+
+    public MyStack(int capacity) {
+        stack = (T[]) new Object[capacity];
+        top = -1;
     }
 
-    public void push(Object value) {
-        if (size >= elements.length) {
-            Object[] newElements = new Object[2 * elements.length];
-            System.arraycopy(elements, 0, newElements, 0, elements.length);
-            elements = newElements;
+    public void push(T value) {
+        if (top == stack.length - 1) {
+            throw new IllegalStateException("Stack is full");
         }
-        elements[size++] = value;
+        stack[++top] = value;
     }
 
     public void remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+        if (index < 0 || index > top) {
+            throw new IndexOutOfBoundsException("Invalid index");
         }
-        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
-        size--;
+        for (int i = index; i < top; i++) {
+            stack[i] = stack[i + 1];
+        }
+        stack[top--] = null;
     }
 
     public void clear() {
-        elements = new Object[10];
-        size = 0;
+        stack = (T[]) new Object[10];
+        top = -1;
     }
 
-    public Object peek() {
-        if (size == 0) {
-            throw new NoSuchElementException();
+    public int size() {
+        return top + 1;
+    }
+
+    public T peek() {
+        if (top == -1) {
+            throw new IllegalStateException("Stack is empty");
         }
-        return elements[size - 1];
+        return stack[top];
     }
 
-    public Object pop() {
-        Object element = peek();
-        elements[size - 1] = null;
-        size--;
-        return element;
+    public T pop() {
+        if (top == -1) {
+            throw new IllegalStateException("Stack is empty");
+        }
+        return stack[top--];
     }
 }
